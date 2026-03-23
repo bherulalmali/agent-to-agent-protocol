@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-# Explicitly load .env from the POC_A2A/ directory so it works regardless
+# Explicitly load .env from the repo root so it works regardless
 # of which working directory the process is started from.
 _POC_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(dotenv_path=os.path.join(_POC_ROOT, ".env"))

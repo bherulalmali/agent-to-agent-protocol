@@ -8,12 +8,12 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import StateGraph, END
 
 # A2A Core Imports
-from POC_A2A.config.settings import GREETING_PORT, TELL_TIME_URL
-from POC_A2A.core.models import (
+from config.settings import GREETING_PORT, TELL_TIME_URL
+from core.models import (
     AgentCard, Task, TaskStatus, TaskState, SendTaskRequest, SendTaskResponse,
     Message, TextPart, SendTaskParams
 )
-from POC_A2A.core.server import A2ABaseServer
+from core.server import A2ABaseServer
 
 logger = logging.getLogger(__name__)
 

@@ -1,4 +1,4 @@
-# Agent-to-Agent (A2A) Protocol — POC_A2A
+# Agent-to-Agent (A2A) Protocol
 
 A proof-of-concept demonstrating the **Agent-to-Agent (A2A) protocol**, where multiple AI agents built on different frameworks communicate with each other over a standardized JSON-RPC 2.0 interface.
 
@@ -50,7 +50,6 @@ All variants expose the same A2A interface, so the Orchestrator can call any of 
 ## Project Structure
 
 ```
-POC_A2A/
 ├── agents/
 │   ├── tell_time.py             # TellTimeAgent — returns current system time (Port 8001)
 │   ├── greeting.py              # GreetingAgent — poetic greeting, calls TellTimeAgent (Port 8002)
@@ -96,11 +95,11 @@ POC_A2A/
 ### Step 1 — Create and activate a virtual environment
 
 ```bash
-cd /path/to/a2a_samples-main
+cd /path/to/agent-to-agent-protocol
 
-python3 -m venv POC_A2A/venv
-source POC_A2A/venv/bin/activate      # macOS / Linux
-# POC_A2A\venv\Scripts\activate       # Windows
+python3 -m venv venv
+source venv/bin/activate      # macOS / Linux
+# venv\Scripts\activate       # Windows
 ```
 
 ### Step 2 — Install all dependencies
@@ -108,7 +107,7 @@ source POC_A2A/venv/bin/activate      # macOS / Linux
 A `requirements.txt` with fully pinned versions is included:
 
 ```bash
-pip install -r POC_A2A/requirements.txt
+pip install -r requirements.txt
 ```
 
 This installs everything needed for all three agent variants (plain Python, Google ADK, LangGraph).
@@ -118,8 +117,8 @@ This installs everything needed for all three agent variants (plain Python, Goog
 Copy the example env file and fill in your key:
 
 ```bash
-cp POC_A2A/.env.example POC_A2A/.env
-# then edit POC_A2A/.env and set GOOGLE_API_KEY=your_key_here
+cp .env.example .env
+# then edit .env and set GOOGLE_API_KEY=your_key_here
 ```
 
 Get a free API key at https://aistudio.google.com/app/apikey.
@@ -130,19 +129,19 @@ All ports and URLs can also be overridden in `.env` — see `.env.example` for a
 
 ## Running the POC
 
-All commands must be run from the **project root** (`a2a_samples-main/`) with the venv active, so that `POC_A2A.*` package imports resolve correctly.
+All commands must be run from the **repo root** with the venv active.
 
 ```bash
-cd /path/to/a2a_samples-main
-source POC_A2A/venv/bin/activate
+cd /path/to/agent-to-agent-protocol
+source venv/bin/activate
 ```
 
-Then open **4 terminals** (all from `a2a_samples-main/` with the venv active) and start in order:
+Then open **4 terminals** (all from the repo root with the venv active) and start in order:
 
 ### Terminal 1 — TellTimeAgent (Port 8001)
 
 ```bash
-python -m POC_A2A.agents.tell_time
+python -m agents.tell_time
 ```
 
 Expected output:
@@ -154,7 +153,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8001
 ### Terminal 2 — GreetingAgent (Port 8002)
 
 ```bash
-python -m POC_A2A.agents.greeting
+python -m agents.greeting
 ```
 
 Expected output:
@@ -166,7 +165,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8002
 ### Terminal 3 — OrchestratorAgent (Port 8003)
 
 ```bash
-python -m POC_A2A.agents.orchestrator
+python -m agents.orchestrator
 ```
 
 Expected output — watch for agent discovery:
@@ -183,7 +182,7 @@ INFO: Uvicorn running on http://0.0.0.0:8003
 ### Terminal 4 — Client UI (Port 8080)
 
 ```bash
-python -m POC_A2A.client.app
+python -m client.app
 ```
 
 Expected output:
@@ -196,7 +195,7 @@ Running on local URL:  http://127.0.0.1:8080
 
 ### Shortcut — run everything with Make
 
-From inside `POC_A2A/`:
+From the repo root:
 
 ```bash
 make run-tell-time     # Terminal 1

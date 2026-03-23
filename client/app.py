@@ -1,8 +1,8 @@
 import httpx
 import gradio as gr
 import uuid
-from POC_A2A.core.models import SendTaskRequest, SendTaskParams, Message, TextPart
-from POC_A2A.config.settings import ORCHESTRATOR_URL, CLIENT_PORT
+from core.models import SendTaskRequest, SendTaskParams, Message, TextPart
+from config.settings import ORCHESTRATOR_URL, CLIENT_PORT
 
 async def chat_with_orchestrator(message, history):
     session_id = str(uuid.uuid4())

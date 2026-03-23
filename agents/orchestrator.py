@@ -5,13 +5,13 @@ from typing import List, Optional
 import httpx
 from google.genai import Client, types
 
-from POC_A2A.config.settings import GOOGLE_API_KEY, ORCHESTRATOR_PORT, AGENT_REGISTRY_PATH
-from POC_A2A.core.models import (
+from config.settings import GOOGLE_API_KEY, ORCHESTRATOR_PORT, AGENT_REGISTRY_PATH
+from core.models import (
     AgentCard, Task, TaskStatus, TaskState, SendTaskRequest, SendTaskResponse,
     Message, TextPart, SendTaskParams
 )
-from POC_A2A.core.server import A2ABaseServer
-from POC_A2A.utilities.discovery import discover_agents
+from core.server import A2ABaseServer
+from utilities.discovery import discover_agents
 
 # Set up logger
 logger = logging.getLogger(__name__)

@@ -1,7 +1,7 @@
 import httpx
 import logging
 from typing import List
-from POC_A2A.core.models import AgentCard
+from core.models import AgentCard
 
 logger = logging.getLogger(__name__)
 

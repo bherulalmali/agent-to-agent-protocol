@@ -12,12 +12,12 @@ from google.adk.runners import Runner
 from google.genai import types
 
 # A2A Core Imports
-from POC_A2A.config.settings import TELL_TIME_PORT
-from POC_A2A.core.models import (
+from config.settings import TELL_TIME_PORT
+from core.models import (
     AgentCard, Task, TaskStatus, TaskState, SendTaskRequest, SendTaskResponse,
     Message, TextPart
 )
-from POC_A2A.core.server import A2ABaseServer
+from core.server import A2ABaseServer
 
 # Set up logger
 logger = logging.getLogger(__name__)

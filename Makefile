@@ -1,6 +1,5 @@
-PYTHON      := venv/bin/python
-PIP         := venv/bin/pip
-PROJECT_ROOT := $(shell cd .. && pwd)
+PYTHON := venv/bin/python
+PIP    := venv/bin/pip
 
 .PHONY: help install check-models run-tell-time run-greeting run-orchestrator run-client run-all
 
@@ -14,7 +13,7 @@ help:
 	@echo "  make run-greeting     Start GreetingAgent  (port 8002)"
 	@echo "  make run-orchestrator Start OrchestratorAgent (port 8003)"
 	@echo "  make run-client       Start Gradio chat client (port 8080)"
-	@echo "  make run-all          Start all four services in background"
+	@echo "  make run-all          Start all four services (agents in background, client in foreground)"
 	@echo ""
 
 install:
@@ -22,23 +21,23 @@ install:
 	$(PIP) install -r requirements.txt
 
 check-models:
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.scripts.check_models
+	$(PYTHON) -m scripts.check_models
 
 run-tell-time:
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.agents.tell_time
+	$(PYTHON) -m agents.tell_time
 
 run-greeting:
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.agents.greeting
+	$(PYTHON) -m agents.greeting
 
 run-orchestrator:
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.agents.orchestrator
+	$(PYTHON) -m agents.orchestrator
 
 run-client:
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.client.app
+	$(PYTHON) -m client.app
 
 run-all:
-	@echo "Starting all A2A agents in background..."
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.agents.tell_time   &
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.agents.greeting    &
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.agents.orchestrator &
-	cd $(PROJECT_ROOT) && $(PYTHON) -m POC_A2A.client.app
+	@echo "Starting all A2A agents..."
+	$(PYTHON) -m agents.tell_time    &
+	$(PYTHON) -m agents.greeting     &
+	$(PYTHON) -m agents.orchestrator &
+	$(PYTHON) -m client.app

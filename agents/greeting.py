@@ -1,12 +1,12 @@
 import httpx
 import asyncio
 from typing import Optional
-from POC_A2A.core.models import (
+from core.models import (
     AgentCard, Task, TaskStatus, TaskState, SendTaskRequest, SendTaskResponse,
     Message, TextPart, SendTaskParams
 )
-from POC_A2A.core.server import A2ABaseServer
-from POC_A2A.config.settings import GREETING_PORT, TELL_TIME_URL
+from core.server import A2ABaseServer
+from config.settings import GREETING_PORT, TELL_TIME_URL
 
 # The identity of our agent
 agent_card = AgentCard(

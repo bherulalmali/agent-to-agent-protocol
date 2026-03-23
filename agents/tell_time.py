@@ -1,8 +1,8 @@
 import asyncio
 from datetime import datetime
-from POC_A2A.core.models import AgentCard, Task, TaskStatus, TaskState, SendTaskRequest, SendTaskResponse, Message, TextPart
-from POC_A2A.core.server import A2ABaseServer
-from POC_A2A.config.settings import TELL_TIME_PORT
+from core.models import AgentCard, Task, TaskStatus, TaskState, SendTaskRequest, SendTaskResponse, Message, TextPart
+from core.server import A2ABaseServer
+from config.settings import TELL_TIME_PORT
 
 # The identity of our agent
 agent_card = AgentCard(

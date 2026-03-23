@@ -8,7 +8,7 @@ from fastapi import FastAPI, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 
-from POC_A2A.core.models import AgentCard, JSONRPCResponse, InternalError, SendTaskRequest, SendTaskResponse
+from core.models import AgentCard, JSONRPCResponse, InternalError, SendTaskRequest, SendTaskResponse
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
